@@ -1,3 +1,5 @@
+package practicum;
+
 public class Task {
     private long id;
     private String name;
@@ -33,7 +35,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "practicum.Task{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
