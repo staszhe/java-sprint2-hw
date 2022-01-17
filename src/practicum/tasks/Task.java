@@ -6,9 +6,9 @@ public class Task {
     private long id;
     private String name;
     private String description;
-    private String status;
+    private Status status;
 
-    public Task(long id, String name, String description, String status) {
+    public Task(long id, String name, String description, Status status) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -27,11 +27,11 @@ public class Task {
         return description;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -50,10 +50,12 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return id == task.id && Objects.equals(name, task.name) &&
+        return id == task.id &&
+                Objects.equals(name, task.name) &&
                 Objects.equals(description, task.description) &&
-                Objects.equals(status, task.status);
+                status == task.status;
     }
+
 
     @Override
     public int hashCode() {

@@ -2,6 +2,7 @@
 
 import practicum.manager.Manager;
 import practicum.manager.TaskManager;
+import practicum.tasks.Status;
 import practicum.tasks.SubTask;
 import practicum.tasks.Epic;
 import practicum.tasks.Task;
@@ -26,24 +27,24 @@ public class Main {
         counter++;
         taskManager.addEpic(ep3);
 
-        SubTask ep4 = new SubTask(counter, "Подзадача" + counter, "sdasd", "NEW", 3);
+        SubTask ep4 = new SubTask(counter, "Подзадача" + counter, "sdasd", Status.NEW, 3);
         counter++;
         taskManager.addSubTask(ep4);
 
-        SubTask ep5 = new SubTask(counter, "Подзадача" + counter, "sdasd", "IN_PROGRESS", 3);
+        SubTask ep5 = new SubTask(counter, "Подзадача" + counter, "sdasd", Status.IN_PROGRESS, 3);
         counter++;
         taskManager.addSubTask(ep5);
 
-        SubTask ep5dot5 = new SubTask(5L, "Подзадача5", "sdasd", "DONE", 3);
+        SubTask ep5dot5 = new SubTask(5L, "Подзадача5", "sdasd", Status.DONE, 3);
         taskManager.updateSubTask(ep5dot5);
 
-        Task ep6 = new Task(counter, "Задача" + counter, "sdasd", "IN_PROGRESS");
+        Task ep6 = new Task(counter, "Задача" + counter, "sdasd", Status.IN_PROGRESS);
         taskManager.addTask(ep6);
-        Task ep6dot6 = new Task(counter, "Задача" + counter, "sdasd", "DONE");
+        Task ep6dot6 = new Task(counter, "Задача" + counter, "sdasd", Status.DONE);
         taskManager.addTask(ep6dot6);
         counter++;
 
-        SubTask ep7 = new SubTask(counter, "Подзадача" + counter, "sdasd", "DONE", 1);
+        SubTask ep7 = new SubTask(counter, "Подзадача" + counter, "sdasd", Status.DONE, 1);
 
         taskManager.addSubTask(ep7);
 

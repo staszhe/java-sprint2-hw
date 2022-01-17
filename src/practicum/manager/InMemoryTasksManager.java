@@ -1,6 +1,7 @@
 package practicum.manager;
 
 import practicum.tasks.Epic;
+import practicum.tasks.Status;
 import practicum.tasks.SubTask;
 import practicum.tasks.Task;
 
@@ -91,7 +92,7 @@ public class InMemoryTasksManager implements TaskManager {
 
     @Override
     public void addEpic(Epic epic) {
-        epic.setStatus("NEW");
+        epic.setStatus(Status.NEW);
         epics.put(epic.getId(), epic);
     }
 
@@ -166,22 +167,22 @@ public class InMemoryTasksManager implements TaskManager {
         int counterStatusNew = 0;
         int counterStatusDone = 0;
         if (epic.getSubTasks().size() == 0) {
-            epic.setStatus("NEW");
+            epic.setStatus(Status.NEW);
         } else {
             for (Long subTaskId : epic.getSubTasks()) {
-                if (subTasks.get(subTaskId).getStatus().equals("NEW")) {
+                if (subTasks.get(subTaskId).getStatus().equals(Status.NEW)) {
                     counterStatusNew++;
-                } else if (subTasks.get(subTaskId).getStatus().equals("DONE")) {
+                } else if (subTasks.get(subTaskId).getStatus().equals(Status.DONE)) {
                     counterStatusDone++;
                 }
             }
 
             if (epic.getSubTasks().size() == counterStatusNew) {
-                epic.setStatus("NEW");
+                epic.setStatus(Status.NEW);
             } else if (epic.getSubTasks().size() == counterStatusDone) {
-                epic.setStatus("DONE");
+                epic.setStatus(Status.DONE);
             } else {
-                epic.setStatus("IN_PROGRESS");
+                epic.setStatus(Status.IN_PROGRESS);
             }
         }
         updateEpic(epic);
