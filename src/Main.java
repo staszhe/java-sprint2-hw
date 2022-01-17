@@ -54,6 +54,7 @@ public class Main {
         //taskManager.removeById(6L);
         //taskManager.removeById(4L);
         //taskManager.removeById(5L);
+        //taskManager.removeAll();
         System.out.println("______________________________");
         taskManager.printAllEpic();
         System.out.println("______________________________");
