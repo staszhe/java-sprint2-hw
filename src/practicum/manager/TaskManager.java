@@ -30,4 +30,6 @@ public interface TaskManager {
 
     void removeById(Long id);
 
+    void printHistory();
+
 }

@@ -6,16 +6,19 @@ import practicum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class InMemoryTasksManager implements TaskManager {
-    HashMap<Long, SubTask> subTasks;
-    HashMap<Long, Epic> epics;
-    HashMap<Long, Task> tasks;
+    private HashMap<Long, SubTask> subTasks;
+    private HashMap<Long, Epic> epics;
+    private HashMap<Long, Task> tasks;
+    private List<Task> historyLog;
 
     public InMemoryTasksManager() {
         subTasks = new HashMap<>();
         epics = new HashMap<>();
         tasks = new HashMap<>();
+        historyLog = new ArrayList<>();
     }
 
     @Override
@@ -55,8 +58,10 @@ public class InMemoryTasksManager implements TaskManager {
     public void printAnyTaskById(Long id) {
         if (epics.containsKey(id)) {
             System.out.println(epics.get(id));
+            addEventToHistory(epics.get(id));
         } else if (subTasks.containsKey(id)) {
             System.out.println(subTasks.get(id));
+            addEventToHistory(subTasks.get(id));
         } else if (tasks.containsKey(id)) {
             System.out.println(tasks.get(id));
         } else {
@@ -131,6 +136,26 @@ public class InMemoryTasksManager implements TaskManager {
         } else {
             System.out.println("Id = " + id + " отсутвует во всех типах задач");
         }
+    }
+
+    @Override
+    public void printHistory() {
+        int i = 0;
+        if (!this.historyLog.isEmpty()) {
+            System.out.println("История вызовов Epic и SubTask:");
+            for (Task task : this.historyLog) {
+                System.out.println(++i + " " + task.toString());
+            }
+        } else {
+            System.out.println("На данный момент истории вызовов нет!");
+        }
+    }
+
+    private void addEventToHistory(Task task) {
+        if (this.historyLog.size() > 9) {
+            this.historyLog.remove(0);
+        }
+        this.historyLog.add(task);
     }
 
     private void updateEpicStatus(Epic epic) {

@@ -40,6 +40,11 @@ public class Main {
         inMemoryTasksManager.addTask(ep6);
         Task ep6dot6 = new Task(counter, "Задача" + counter, "sdasd", "DONE");
         inMemoryTasksManager.addTask(ep6dot6);
+        counter++;
+
+        SubTask ep7 = new SubTask(counter, "Подзадача" + counter, "sdasd", "DONE", 1);
+
+        inMemoryTasksManager.addSubTask(ep7);
 
         Epic ep3dot3 = new Epic(3L, "Update", "sdasd");
         inMemoryTasksManager.updateEpic(ep3dot3);
@@ -50,8 +55,29 @@ public class Main {
 
         inMemoryTasksManager.printAllEpic();
         inMemoryTasksManager.printSubTasksByEpicId(3L);
-        inMemoryTasksManager.printAnyTaskById(4L);
+
+        System.out.println("______________________________");
+        inMemoryTasksManager.printHistory();
+        System.out.println("______________________________");
+
+        inMemoryTasksManager.printAnyTaskById(1L);//1
+        inMemoryTasksManager.printAnyTaskById(5L);//2
+        inMemoryTasksManager.printAnyTaskById(4L);//3
+        inMemoryTasksManager.printAnyTaskById(2L);//4
+        inMemoryTasksManager.printAnyTaskById(2L);//5
+        inMemoryTasksManager.printAnyTaskById(4L);//6
+        inMemoryTasksManager.printAnyTaskById(3L);//7
+        inMemoryTasksManager.printAnyTaskById(2L);//8
+        inMemoryTasksManager.printAnyTaskById(4L);//9
+        inMemoryTasksManager.printAnyTaskById(4L);//10
+        inMemoryTasksManager.printAnyTaskById(7L);//11
+
+
         inMemoryTasksManager.printAllTask();
+
+        System.out.println("______________________________");
+        inMemoryTasksManager.printHistory();
+        System.out.println("______________________________");
         // Конец проверки
 
 
