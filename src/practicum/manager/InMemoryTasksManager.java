@@ -23,6 +23,7 @@ public class InMemoryTasksManager implements TaskManager {
 
     @Override
     public void printAllTask() {
+        System.out.println("Список всех Task:");
         if (!tasks.isEmpty()) {
             for (Task task : tasks.values()) {
                 System.out.println(task);
@@ -34,6 +35,7 @@ public class InMemoryTasksManager implements TaskManager {
 
     @Override
     public void printAllEpic() {
+        System.out.println("Список всех Epic:");
         if (!epics.isEmpty()) {
             for (Epic Epic : epics.values()) {
                 System.out.println(Epic);
@@ -46,6 +48,7 @@ public class InMemoryTasksManager implements TaskManager {
     @Override
     public void printSubTasksByEpicId(Long epicId) {
         if (epics.containsKey(epicId) && epics.get(epicId).getSubTasks().size() > 0) {
+            System.out.println("Список SubTask для Epic id=" + epicId + ":");
             for (Long idSubTask : epics.get(epicId).getSubTasks()) {
                 System.out.println(subTasks.get(idSubTask));
             }
@@ -141,8 +144,8 @@ public class InMemoryTasksManager implements TaskManager {
     @Override
     public void printHistory() {
         int i = 0;
+        System.out.println("История вызовов Epic и SubTask:");
         if (!this.historyLog.isEmpty()) {
-            System.out.println("История вызовов Epic и SubTask:");
             for (Task task : this.historyLog) {
                 System.out.println(++i + " " + task.toString());
             }
