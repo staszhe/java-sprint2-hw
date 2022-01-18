@@ -38,8 +38,8 @@ public class InMemoryTasksManager implements TaskManager {
     public void printAllEpic() {
         System.out.println("Список всех Epic:");
         if (!epics.isEmpty()) {
-            for (Epic Epic : epics.values()) {
-                System.out.println(Epic);
+            for (Epic epic : epics.values()) {
+                System.out.println(epic);
             }
         } else {
             System.out.println("Эпики не найдены");
